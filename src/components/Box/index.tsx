@@ -22,7 +22,7 @@ export default function BoxConteiner({ width, height, children }: IBoxSection) {
       width={width}
       height={height}
       darkMode={darkMode ? darkTheme : lightTheme}
-      elevation={23}
+      elevation={7}
     >
       {children}
     </Box>

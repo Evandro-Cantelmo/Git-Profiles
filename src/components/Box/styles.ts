@@ -12,6 +12,6 @@ export const Box = styled(Paper)<BoxSection>(({ width, darkMode, height }) => ({
   color: darkMode.text,
   background: darkMode.cardBack,
   borderRadius:'10px',
-  padding:'10px'
+  
   
 }));
