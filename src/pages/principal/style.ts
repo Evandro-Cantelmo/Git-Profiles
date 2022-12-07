@@ -1,3 +1,4 @@
+import { style } from "@mui/system";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -14,4 +15,12 @@ export const Header = styled.header`
   justify-content: space-between;
   padding: 0 60px;
   align-items: center;
+`;
+export const Section = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  grid-column: 2/6;
+  grid-row: 2/7;
 `;

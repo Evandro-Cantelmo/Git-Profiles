@@ -1,6 +1,16 @@
 import React, { ChangeEvent, useContext } from "react";
 import { Context } from "../../context/Context";
-import { MaterialUISwitch } from "./style";
+import { MaterialUISwitch } from "./styles";
+
+/**
+ * @export
+ * @component
+ * @name Switch
+ *
+ *
+ * @description
+ * Switch
+ */
 
 export default function SwitchDark() {
   const { setDarkMode, darkMode } = useContext(Context);
