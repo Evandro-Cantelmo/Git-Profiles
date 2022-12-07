@@ -1,12 +1,15 @@
 import { useContext } from "react";
+import SwitchDark from "../../components/Switch";
 import { Context } from "../../context/Context";
+import { Container, Header } from "./style";
 
 export default function Principal() {
-  const { darkMode, setDarkMode } = useContext(Context);
-
   return (
-    <div>
-      <button onClick={() => setDarkMode(!darkMode)}>asdasd</button>
-    </div>
+    <Container>
+      <Header>
+        <h1>Github Profiles</h1>
+        <SwitchDark />
+      </Header>
+    </Container>
   );
 }

@@ -12,8 +12,6 @@ const GlobalStyle = createGlobalStyle`
 
       width: 100vw;
       min-height: 100vh;
-
-      padding: 27.5px;
     }
 
     * {
@@ -25,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
     body {
       background: ${(props) => props.theme.background};
       color: ${(props) => props.theme.text};
-      transition: background ease 1s;
+      transition: background, color ease 1s;
     }
   `}
 `;
