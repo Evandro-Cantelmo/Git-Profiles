@@ -1,5 +1,5 @@
-import { style } from "@mui/system";
 import styled from "styled-components";
+import { ISection } from "../../interfaces/section.interface";
 
 export const Container = styled.div`
   display: grid;
@@ -16,11 +16,11 @@ export const Header = styled.header`
   padding: 0 60px;
   align-items: center;
 `;
-export const Section = styled.section`
+export const Section = styled.section<ISection>`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   grid-column: 2/6;
-  grid-row: 2/7;
+  grid-row: ${(props) => props.gridRow};
 `;

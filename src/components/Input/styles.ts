@@ -16,6 +16,8 @@ export const MaterialUiInput = styled(TextField)<ButtonType>(
       height: "100vh",
       padding: "0 0 0 10px",
       color: darkMode.text,
+      
     },
   })
 );
+

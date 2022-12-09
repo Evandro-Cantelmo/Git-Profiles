@@ -16,12 +16,16 @@ export default function CustomButtons({
   borderRadius,
   height,
   width,
+  onClick,
+  type,
 }: IButton) {
   return (
     <CustomButtonUi
       variant="contained"
       color="primary"
+      onClick={onClick}
       width={width}
+      type={type}
       height={height}
       borderRadius={borderRadius}
     >

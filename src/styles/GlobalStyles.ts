@@ -28,6 +28,9 @@ const GlobalStyle = createGlobalStyle`
       transition-duration: 0.2s;
       transition-timing-function: linear;
     }
+    form {
+      display: contents;
+    }
   `}
 `;
 

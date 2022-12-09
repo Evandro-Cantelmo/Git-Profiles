@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { MaterialUiInput } from "./styles";
@@ -17,12 +17,22 @@ import { darkTheme, lightTheme } from "../../styles/theme";
  * Input
  */
 
-export default function Input({ placeholder }: IInput) {
+export default function Input({
+  placeholder,
+  value,
+  type,
+  onClick,
+  onChange,
+}: IInput) {
+  const [] = useState();
+
   const { darkMode } = useContext(Context);
   return (
     <MaterialUiInput
       id="outlined-basic"
       variant="standard"
+      value={value}
+      onChange={onChange}
       placeholder={placeholder}
       darkMode={darkMode ? darkTheme : lightTheme}
       InputProps={{
@@ -35,9 +45,11 @@ export default function Input({ placeholder }: IInput) {
         endAdornment: (
           <InputAdornment position="end">
             <CustomButtons
+              type={type}
               borderRadius="0px 10px 10px 0px"
               height="60px"
               width="10vw"
+              onClick={onClick}
             >
               Search
             </CustomButtons>
