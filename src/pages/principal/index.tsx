@@ -12,18 +12,18 @@ import Snack from "../../components/SnackBar";
 export default function Principal() {
   const {
     IsShow,
-    handleGetJobsByID,
-    handleGetJobsByIDRepo,
+    HandleGetUser,
+    HandleGetRepo,
     setUsername,
     openSnack,
   } = useContext(Context);
 
   function searchUserHandler(e: FormEvent) {
     e.preventDefault();
-    handleGetJobsByID();
-    handleGetJobsByIDRepo();
+    HandleGetUser();
+    HandleGetRepo();
   }
-  function test() {
+  function styleMode() {
     return IsShow ? withBlackBoard : noBlackBoard;
   }
   const handleEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +37,7 @@ export default function Principal() {
         <SwitchDark />
       </Header>
 
-      <Section gridRow={test().gridRow}>
+      <Section gridRow={styleMode().gridRow}>
         <form onSubmit={searchUserHandler}>
           <BoxConteiner width="70%" height="60px">
             <Input
@@ -49,7 +49,7 @@ export default function Principal() {
         </form>
 
         <BoxConteiner
-          display={test().display}
+          display={styleMode().display}
           width="70%"
           height="60vh"
         ></BoxConteiner>

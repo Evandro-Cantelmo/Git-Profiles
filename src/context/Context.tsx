@@ -36,7 +36,7 @@ function ContextProvider({ children }: IContextProvider) {
   }
 
   console.log(`ss foi`, userData, userRepoData);
-  const handleGetJobsByID = async () => {
+  const HandleGetUser = async () => {
     const payload = {
       User: username,
     };
@@ -75,7 +75,7 @@ function ContextProvider({ children }: IContextProvider) {
       });
     }
   };
-  const handleGetJobsByIDRepo = async () => {
+  const HandleGetRepo = async () => {
     const payload = {
       User: username,
     };
@@ -118,8 +118,8 @@ function ContextProvider({ children }: IContextProvider) {
         setShow,
         username,
         setUsername,
-        handleGetJobsByID,
-        handleGetJobsByIDRepo,
+        HandleGetUser,
+        HandleGetRepo,
         openSnack,
         setOpenSnack,
       }}

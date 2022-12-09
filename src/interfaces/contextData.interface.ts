@@ -10,13 +10,13 @@ export type ContextData = {
     severity?: "error" | "info" | "success" | "warning";
   };
 
-  handleGetJobsByID?: () => void;
-  handleGetJobsByIDRepo?: () => void;
+  HandleGetUser?: () => void;
+  HandleGetRepo?: () => void;
 };
 
 export interface IContextData {
-  handleGetJobsByID: () => Promise<void>;
-  handleGetJobsByIDRepo: () => Promise<void>;
+  HandleGetUser: () => Promise<void>;
+  HandleGetRepo: () => Promise<void>;
   username: string;
   setUsername: React.Dispatch<React.SetStateAction<string>>;
   IsShow: boolean;
