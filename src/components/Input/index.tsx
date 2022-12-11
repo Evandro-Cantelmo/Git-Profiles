@@ -24,8 +24,6 @@ export default function Input({
   onClick,
   onChange,
 }: IInput) {
-  const [] = useState();
-
   const { darkmode } = useContext(Context);
   return (
     <MaterialUiInput

@@ -1,4 +1,4 @@
-import React, { createContext, useState, useCallback } from "react";
+import React, { createContext, useState} from "react";
 import { IContextData } from "../interfaces/contextData.interface";
 import { IContextProvider } from "../interfaces/contextProvider.interface";
 import { GithubApi, GithubRepoApi } from "../services/Github/githubApi";
