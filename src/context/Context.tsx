@@ -1,7 +1,8 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useCallback } from "react";
 import { IContextData } from "../interfaces/contextData.interface";
 import { IContextProvider } from "../interfaces/contextProvider.interface";
 import { GithubApi, GithubRepoApi } from "../services/Github/githubApi";
+import { darkTheme, lightTheme } from "../styles/theme";
 
 const Context = createContext({} as IContextData);
 
@@ -15,7 +16,7 @@ const Context = createContext({} as IContextData);
  */
 
 function ContextProvider({ children }: IContextProvider) {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkmode, setdarkmode] = useState(true);
   const [IsShow, setShow] = useState(false);
   const [username, setUsername] = useState("");
   const [userData, setUserData] = useState<any>();
@@ -35,7 +36,6 @@ function ContextProvider({ children }: IContextProvider) {
     }, 2000);
   }
 
-  console.log(`ss foi`, userData, userRepoData);
   const HandleGetUser = async () => {
     const payload = {
       User: username,
@@ -45,27 +45,39 @@ function ContextProvider({ children }: IContextProvider) {
       const res = await GithubApi({
         ...payload,
       });
-      const { error, data, status } = res;
+      const { data, status } = res;
 
-      setUserData(data);
-      if (status === 200) {
-        setShow(true);
-        setOpenSnack({
-          ...openSnack,
-          open: false,
-        });
-      } else if (status === 404) {
-        setOpenSnack({
-          open: true,
-          message: `User not found`,
-          severity: "error",
-        });
-      } else {
-        setOpenSnack({
-          open: true,
-          message: `Opps!! Something went wrong`,
-          severity: "error",
-        });
+      switch (status) {
+        case 200:
+          setUserData(data);
+          setShow(true);
+          setOpenSnack({
+            ...openSnack,
+            open: false,
+          });
+          break;
+        case 404:
+          setOpenSnack({
+            open: true,
+            message: `User not found`,
+            severity: "error",
+          });
+          break;
+        case 403:
+          setOpenSnack({
+            open: true,
+            message: `limit exceeded`,
+            severity: "error",
+          });
+          break;
+
+        default:
+          setOpenSnack({
+            open: true,
+            message: `Opps!! Something went wrong`,
+            severity: "error",
+          });
+          break;
       }
     } catch (erro) {
       setOpenSnack({
@@ -84,21 +96,12 @@ function ContextProvider({ children }: IContextProvider) {
       const res = await GithubRepoApi({
         ...payload,
       });
-      const { error, data, status } = res;
+      const { data, status } = res;
 
-      setUserRepoData(data);
-      if (status === 200) {
-        setOpenSnack({
-          ...openSnack,
-          open: false,
-        });
-      } else if (status === 404) {
-      } else {
-        setOpenSnack({
-          open: true,
-          message: `Opps!! Something went wrong`,
-          severity: "error",
-        });
+      switch (status) {
+        case 200:
+          setUserRepoData(data);
+          break;
       }
     } catch (erro) {
       setOpenSnack({
@@ -108,12 +111,15 @@ function ContextProvider({ children }: IContextProvider) {
       });
     }
   };
+  function styleMode() {
+    return darkmode ? darkTheme : lightTheme;
+  }
 
   return (
     <Context.Provider
       value={{
-        darkMode,
-        setDarkMode,
+        darkmode,
+        setdarkmode,
         IsShow,
         setShow,
         username,
@@ -122,6 +128,9 @@ function ContextProvider({ children }: IContextProvider) {
         HandleGetRepo,
         openSnack,
         setOpenSnack,
+        userData,
+        userRepoData,
+        styleMode,
       }}
     >
       {children}

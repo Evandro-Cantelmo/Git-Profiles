@@ -1,22 +1,19 @@
-import { useContext, FormEvent } from "react";
-import BoxConteiner from "../../components/Box";
+import { useContext, FormEvent, useState, useEffect } from "react";
+import BoxConteiner from "../../components/BoxConteiner";
 import Input from "../../components/Input";
 
-import SwitchDark from "../../components/Switch";
+import SwitchDark from "../../components/SwitchDark";
 
 import { Container, Header, Section } from "./style";
 import { Context } from "../../context/Context";
 import { noBlackBoard, withBlackBoard } from "../../styles/theme";
 import Snack from "../../components/SnackBar";
+import BlackBoard from "../../components/BlackBoard";
 
 export default function Principal() {
-  const {
-    IsShow,
-    HandleGetUser,
-    HandleGetRepo,
-    setUsername,
-    openSnack,
-  } = useContext(Context);
+  const [size, setSize] = useState({ width: "70%", height: "60vh" });
+  const { IsShow, HandleGetUser, HandleGetRepo, setUsername, openSnack } =
+    useContext(Context);
 
   function searchUserHandler(e: FormEvent) {
     e.preventDefault();
@@ -30,6 +27,19 @@ export default function Principal() {
     setUsername(e.target.value);
   };
 
+  useEffect(() => {
+    let maxWidth = window.matchMedia("(max-width: 700px)");
+    function mediaQuery(a: any) {
+      if (a.matches) {
+        setSize({ ...size, width: "95vw" });
+      } else {
+        setSize({ width: "70%", height: "60vh" });
+      }
+    }
+    mediaQuery(maxWidth);
+    maxWidth.addEventListener("change", mediaQuery);
+  }, []);
+
   return (
     <Container>
       <Header>
@@ -39,7 +49,7 @@ export default function Principal() {
 
       <Section gridRow={styleMode().gridRow}>
         <form onSubmit={searchUserHandler}>
-          <BoxConteiner width="70%" height="60px">
+          <BoxConteiner width={size.width} height="60px">
             <Input
               type="submit"
               onChange={handleEvent}
@@ -50,9 +60,11 @@ export default function Principal() {
 
         <BoxConteiner
           display={styleMode().display}
-          width="70%"
-          height="60vh"
-        ></BoxConteiner>
+          width={size.width}
+          height={size.height}
+        >
+          <BlackBoard />
+        </BoxConteiner>
       </Section>
       <Snack
         open={openSnack.open}

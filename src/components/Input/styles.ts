@@ -2,11 +2,11 @@ import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 
 type ButtonType = {
-  darkMode?: any;
+  darkmode?: any;
 };
 
 export const MaterialUiInput = styled(TextField)<ButtonType>(
-  ({ darkMode }) => ({
+  ({ darkmode }) => ({
     height: "100%",
     width: "100%",
 
@@ -15,7 +15,7 @@ export const MaterialUiInput = styled(TextField)<ButtonType>(
     "& .css-1aa5qj0-MuiInputBase-root-MuiInput-root": {
       height: "100vh",
       padding: "0 0 0 10px",
-      color: darkMode.text,
+      color: darkmode.text,
       
     },
   })

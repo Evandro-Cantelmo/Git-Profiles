@@ -5,4 +5,5 @@ export interface IBoxSection {
   width: string;
   height: string;
   display?: string;
+  margin?: string;
 }

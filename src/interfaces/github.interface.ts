@@ -1,6 +1,7 @@
 export type Props = {
-    User?: string;
-  }; 
+  User?: string;
+};
 export interface IGithub {
-  User: string;
+  User?: string;
+  Color?: string;
 }

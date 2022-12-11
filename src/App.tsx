@@ -15,10 +15,10 @@ import { darkTheme, lightTheme } from "./styles/theme";
  */
 
 function App() {
-  const { darkMode } = useContext(Context);
+  const { darkmode } = useContext(Context);
 
   return (
-    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+    <ThemeProvider theme={darkmode ? darkTheme : lightTheme}>
       <GlobalStyle />
       <Principal />
     </ThemeProvider>

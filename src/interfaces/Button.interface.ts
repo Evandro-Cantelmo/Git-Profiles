@@ -2,7 +2,7 @@ import { ReactNode, MouseEventHandler } from "react";
 export interface IButton {
   width?: string;
   height?: string;
-  borderRadius?: string;
+  borderradius?: string;
   variant?: string;
   color?: string;
   children?: ReactNode;
