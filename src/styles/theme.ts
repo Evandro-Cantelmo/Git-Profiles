@@ -2,7 +2,8 @@ export const lightTheme = {
   background: "#EBF4F8",
 
   titles: "#2C2738",
-  text: "red",
+  text: "#595a6b",
+ 
   accent: "#0880AE",
 };
 
@@ -11,6 +12,7 @@ export const darkTheme = {
   titles: "#D6E1DF",
   text: "#D6E1DF",
   cardBack: "#1e2a47",
+  gitRepoCard: "#141d2f",
   accent: "#8A85FF",
 };
 

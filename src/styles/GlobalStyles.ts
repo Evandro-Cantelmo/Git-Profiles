@@ -17,8 +17,26 @@ const GlobalStyle = createGlobalStyle`
     * {
       padding: 0;
       margin: 0;
-
+      font-family: "Roboto", sans-serif;
       box-sizing: border-box;
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        margin: 10px;
+
+        border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #1976d2;
+        border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #3a80c6;
+      }
     }
 
     body {
